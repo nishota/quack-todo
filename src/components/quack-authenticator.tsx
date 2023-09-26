@@ -1,5 +1,4 @@
 // TODO: デザイン
-
 import "@aws-amplify/ui-react/styles.css"
 import Link from "next/link"
 import { ReactNode } from "react";
@@ -17,10 +16,10 @@ import {
   useAuthenticator,
   translations,
 } from "@aws-amplify/ui-react"
-import QuackCopyright from "./quack-copyright"
+import awsExports from "../aws-exports"
+import { useRouter } from "next/router"
 import QuackLogo from "./quack-logo"
-import awsExports from "../../../src/aws-exports"
-import { useRouter } from "next/router";
+import QuackCopyright from "./quack-copyright"
 
 Amplify.configure(awsExports);
 
@@ -31,7 +30,7 @@ type SignProps = {
   children: ReactNode
 }
 
-export default function QuackAuthenticator({children }: SignProps) {
+export default function QuackAuthenticator({ children }: SignProps) {
   const { tokens } = useTheme();
   const router = useRouter();
 
@@ -65,7 +64,7 @@ export default function QuackAuthenticator({children }: SignProps) {
       }
     },
   };
-  
+
   const formFields = {
     signIn: {
       username: {
@@ -378,7 +377,7 @@ export default function QuackAuthenticator({children }: SignProps) {
                     className="inline-block rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
                     data-te-ripple-init
                     data-te-ripple-color="light"
-                    onClick={(e)=>{
+                    onClick={(e) => {
                       router.push("/")
                       signOut?.(e)
                     }}
