@@ -1,9 +1,14 @@
 import { Inter } from 'next/font/google'
+import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Policy() {
   return (
+    <>
+    <Head>
+      <title>Policy</title>
+    </Head>
     <main
       className={`items-center justify-between p-24 ${inter.className}`}
     >
@@ -17,5 +22,6 @@ export default function Policy() {
         </ul>
       </div>
     </main>
+    </>
   )
 }
